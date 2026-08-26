@@ -1,0 +1,733 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --purple-dark: #2c0f55;
+    --purple-border: #542080;
+    --purple-focus: #c42cff;
+    --purple-soft: #9b5cff;
+    --text-soft: #9a83aa;
+    --nav-height: 80px;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+
+    background-image: url("../img/background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.header {
+    width: 100%;
+}
+
+.navbar {
+    height: var(--nav-height);
+    min-height: var(--nav-height);
+    padding: 0 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: var(--purple-dark);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.brand img {
+    display: block;
+    width: 70px;
+    height: auto;
+    object-fit: contain;
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.social-links a {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--purple-soft);
+    border-radius: 50%;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.social-links a:hover {
+    transform: scale(1.05);
+    border-color: var(--purple-focus);
+    background-color: rgba(196, 44, 255, 0.08);
+}
+
+.social-links img {
+    width: 23px;
+    height: 23px;
+    object-fit: contain;
+}
+
+.login-page {
+    width: min(1200px, 100%);
+    min-height: calc(100vh - var(--nav-height));
+    min-height: calc(100dvh - var(--nav-height));
+
+    margin: 0 auto;
+    padding: 34px 60px 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(40px, 8vw, 140px);
+}
+
+.store-info {
+    flex: 1 1 0;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+.store-logo {
+    display: block;
+    width: min(300px, 75%);
+    height: auto;
+}
+
+.store-info h2 {
+    margin: 0;
+
+    font-size: clamp(38px, 4vw, 50px);
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+.store-info p {
+    margin: 12px 0 0;
+
+    color: var(--purple-focus);
+    font-size: clamp(16px, 2vw, 20px);
+    line-height: 1.35;
+}
+
+.login-box {
+    flex: 0 1 450px;
+    width: 100%;
+    max-width: 450px;
+    min-width: 0;
+
+    padding: 28px 35px 28px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background: rgba(44, 15, 85, 0.94);
+    border: 1px solid #4a2070;
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 25px rgba(108, 43, 217, 0.25),
+        0 0 36px rgba(108, 43, 217, 0.15);
+
+    backdrop-filter: blur(3px);
+}
+
+.user-icon {
+    width: 88px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto;
+}
+
+.user-icon img {
+    display: block;
+    width: 250%;
+    height: auto;
+    object-fit: contain;
+}
+
+.login-box h1 {
+    position: relative;
+
+    margin: 2px 0 18px;
+    padding-bottom: 14px;
+
+    font-size: clamp(21px, 2.2vw, 25px);
+    font-weight: 500;
+    line-height: 1.3;
+    text-align: center;
+}
+
+.login-box h1::after {
+    content: "";
+
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+
+    width: 68px;
+    height: 3px;
+
+    transform: translateX(-50%);
+
+    background: linear-gradient(
+        to right,
+        var(--purple-focus) 0%,
+        var(--purple-focus) 75%,
+        var(--purple-border) 75%,
+        var(--purple-border) 100%
+    );
+
+    border-radius: 5px;
+}
+
+.login-box form {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-box {
+    position: relative;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.login-box .input-box input {
+    width: 100%;
+    height: 46px;
+
+    margin: 0;
+    padding: 10px 54px 10px 56px;
+
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #4e0185;
+    outline: none;
+
+    transition: border-color 0.2s ease;
+}
+
+.login-box .input-box input::placeholder {
+    color: var(--text-soft);
+}
+
+.login-box .input-box input:focus {
+    border-bottom-color: var(--purple-focus);
+}
+
+.login-box .input-box input.input-error {
+    border-bottom-color: #ff5a7a;
+}
+
+.field-icon {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+
+    width: 44px;
+    height: 44px;
+
+    transform: translateY(-50%);
+
+    object-fit: contain;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.senha-box input {
+    padding-right: 58px;
+}
+
+.toggle-senha {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: translateY(-50%);
+
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+
+    cursor: pointer;
+    z-index: 3;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.15s ease;
+}
+
+.toggle-senha:hover {
+    background-color: rgba(196, 44, 255, 0.10);
+}
+
+.toggle-senha:active {
+    transform: translateY(-50%) scale(0.94);
+}
+
+.toggle-senha:focus-visible {
+    outline: 2px solid var(--purple-focus);
+    outline-offset: 2px;
+}
+
+.toggle-senha img {
+    display: block;
+    width: 42px;
+    height: 42px;
+    max-width: none;
+
+    transform: scale(3.2);
+    transform-origin: center center;
+
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.btn {
+    width: 100%;
+
+    margin-top: 8px;
+    padding: 12px 20px;
+
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+
+    background: linear-gradient(
+        to bottom,
+        #a800f5,
+        #ab00fa,
+        #c000ff
+    );
+
+    border: none;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    filter: brightness(0.93);
+    box-shadow: 0 8px 24px rgba(196, 44, 255, 0.18);
+}
+
+.btn:active {
+    transform: translateY(2px);
+}
+
+
+.forgot-password {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-top: 10px;
+}
+
+.forgot-password::before,
+.forgot-password::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background-color: rgba(84, 32, 128, 0.8);
+}
+
+.forgot-password a {
+    flex-shrink: 0;
+    color: var(--purple-focus);
+    font-size: 13px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.forgot-password a:hover {
+    color: #e66cff;
+}
+
+.cadastro {
+    width: 100%;
+
+    margin-top: 17px;
+    padding-top: 13px;
+
+    color: #d8d0e5;
+    font-size: 14px;
+    text-align: center;
+
+    border-top: 1px solid rgba(84, 32, 128, 0.8);
+}
+
+.cadastro > a {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #d13cff;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.cadastro > a:hover {
+    color: #e66cff;
+}
+
+.cadastro .seta {
+    margin-left: 8px;
+    font-size: 21px;
+    font-weight: 400;
+}
+
+.footer {
+    position: fixed;
+    left: 50%;
+    bottom: 12px;
+
+    width: max-content;
+    max-width: calc(100vw - 30px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    transform: translateX(-50%);
+
+    color: var(--text-soft);
+    font-size: 13px;
+    white-space: nowrap;
+
+    z-index: 9999;
+}
+
+.footer img {
+    display: block;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+    .navbar {
+        padding: 0 25px;
+    }
+
+    .login-page {
+        padding: 30px 30px 48px;
+        gap: 40px;
+    }
+
+    .store-logo {
+        width: min(240px, 70%);
+    }
+
+    .login-box {
+        flex-basis: 410px;
+    }
+}
+
+@media (max-width: 700px) {
+    :root {
+        --nav-height: 70px;
+    }
+
+    body {
+        background-attachment: scroll;
+    }
+
+    .navbar {
+        padding: 0 18px;
+    }
+
+    .brand img {
+        width: 58px;
+    }
+
+    .social-links {
+        gap: 7px;
+    }
+
+    .social-links a {
+        width: 34px;
+        height: 34px;
+    }
+
+    .social-links img {
+        width: 18px;
+        height: 18px;
+    }
+
+    .login-page {
+        min-height: calc(100vh - var(--nav-height));
+        min-height: calc(100dvh - var(--nav-height));
+
+        padding: 28px 20px 34px;
+
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+    }
+
+    .store-info {
+        display: none;
+    }
+
+    .login-box {
+        flex: none;
+        width: min(100%, 450px);
+        max-width: 450px;
+
+        padding: 26px 24px 28px;
+    }
+
+    .footer {
+        position: static;
+        left: auto;
+        bottom: auto;
+
+        width: auto;
+        max-width: calc(100% - 24px);
+
+        margin: 6px auto 12px;
+        padding: 0 12px;
+
+        transform: none;
+        white-space: normal;
+        text-align: center;
+    }
+}
+
+@media (max-width: 430px) {
+    .navbar {
+        padding: 0 12px;
+    }
+
+    .login-page {
+        padding: 20px 14px 28px;
+    }
+
+    .login-box {
+        padding: 23px 18px 25px;
+        border-radius: 17px;
+    }
+
+    .user-icon {
+        width: 78px;
+    }
+
+    .login-box h1 {
+        margin-bottom: 14px;
+        padding-bottom: 11px;
+        font-size: 21px;
+    }
+
+    .login-box .input-box input {
+        height: 44px;
+        padding-left: 52px;
+        font-size: 14px;
+    }
+
+    .field-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .btn {
+        padding: 10px 16px;
+        font-size: 17px;
+    }
+
+    .forgot-password {
+        margin-top: 8px;
+        gap: 10px;
+    }
+
+    .forgot-password a {
+        font-size: 12px;
+    }
+
+    .cadastro {
+        margin-top: 14px;
+        padding-top: 10px;
+        font-size: 13px;
+    }
+}
+
+@media (max-height: 760px) and (min-width: 701px) {
+    :root {
+        --nav-height: 64px;
+    }
+
+    .navbar {
+        padding: 0 30px;
+    }
+
+    .brand img {
+        width: 56px;
+    }
+
+    .social-links a {
+        width: 35px;
+        height: 35px;
+    }
+
+    .social-links img {
+        width: 19px;
+        height: 19px;
+    }
+
+    .login-page {
+        padding: 12px 48px 30px;
+    }
+
+    .store-logo {
+        width: min(205px, 66%);
+    }
+
+    .store-info h2 {
+        font-size: 34px;
+    }
+
+    .store-info p {
+        margin-top: 6px;
+        font-size: 14px;
+    }
+
+    .login-box {
+        max-width: 420px;
+        padding: 15px 28px 17px;
+        border-radius: 17px;
+    }
+
+    .user-icon {
+        width: 68px;
+    }
+
+    .login-box h1 {
+        margin-bottom: 9px;
+        padding-bottom: 8px;
+        font-size: 20px;
+    }
+
+    .input-box {
+        margin-bottom: 4px;
+    }
+
+    .login-box .input-box input {
+        height: 39px;
+        padding-left: 48px;
+        font-size: 13px;
+    }
+
+    .field-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+    .toggle-senha,
+    .toggle-senha img {
+        width: 38px;
+        height: 38px;
+    }
+
+
+    .btn {
+        margin-top: 3px;
+        padding: 8px 16px;
+        font-size: 16px;
+    }
+
+    .forgot-password {
+        margin-top: 5px;
+        gap: 9px;
+    }
+
+    .forgot-password a {
+        font-size: 11px;
+    }
+
+    .cadastro {
+        margin-top: 8px;
+        padding-top: 7px;
+        font-size: 12px;
+    }
+
+    .cadastro > a {
+        margin-top: 1px;
+        font-size: 14px;
+    }
+
+    .footer {
+        bottom: 4px;
+        font-size: 10px;
+    }
+
+    .footer img {
+        width: 14px;
+        height: 14px;
+    }
+}
