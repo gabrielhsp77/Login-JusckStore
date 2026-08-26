@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Criar conta | Jusk Store</title>
+
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/stylecadastro.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <a class="brand" href="login.html" aria-label="Jusk Store">
+                <img src="img/logo.png" alt="Logo da Jusk Store">
+            </a>
+
+            <div class="social-links">
+                <a
+                    href="https://www.instagram.com/juskstore_?igsh=d3M5b2FzZGtkMGtx"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram da Jusk Store"
+                >
+                    <img src="img/instagram.png" alt="">
+                </a>
+
+                <a
+                    href="https://wa.me/5516997616509"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="WhatsApp da Jusk Store"
+                >
+                    <img src="img/whatsapp.png" alt="">
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="cadastro-page">
+        <section class="store-info">
+            <img
+                class="store-logo"
+                src="img/logo.png"
+                alt="Logo da Jusk Store"
+            >
+
+            <h2>JuskStore</h2>
+            <p>vista sua melhor<br>versão</p>
+        </section>
+
+        <section class="cadastro-box">
+            <div class="user-icon">
+                <img src="img/Icone-pessoa-box.png" alt="Ícone de usuário">
+            </div>
+
+            <h1>Criar sua conta</h1>
+
+            <form id="formCadastro" novalidate>
+                <div class="input-box">
+                    <img class="field-icon" src="img/usuario.png" alt="">
+                    <input
+                        id="nome"
+                        type="text"
+                        name="nome"
+                        placeholder="Digite seu nome completo"
+                        autocomplete="name"
+                        aria-label="Nome completo"
+                        required
+                    >
+                </div>
+
+                <div class="input-box">
+                    <img class="field-icon" src="img/usuario.png" alt="">
+                    <input
+                        id="contato"
+                        type="text"
+                        name="contato"
+                        placeholder="Digite seu email ou telefone"
+                        autocomplete="username"
+                        aria-label="Email ou telefone"
+                        required
+                    >
+                </div>
+
+                <div class="input-box senha-box">
+                    <img class="field-icon" src="img/senha.png" alt="">
+                    <input
+                        id="senha"
+                        type="password"
+                        name="senha"
+                        placeholder="Crie uma senha"
+                        autocomplete="new-password"
+                        aria-label="Senha"
+                        minlength="6"
+                        required
+                    >
+
+                    <button
+                        class="toggle-senha"
+                        type="button"
+                        data-target="senha"
+                        aria-label="Mostrar senha"
+                        aria-pressed="false"
+                    >
+                        <img src="img/olho-aberto.png" alt="">
+                    </button>
+                </div>
+
+                <div class="input-box senha-box">
+                    <img class="field-icon" src="img/senha.png" alt="">
+                    <input
+                        id="confirmarSenha"
+                        type="password"
+                        name="confirmarSenha"
+                        placeholder="Confirme sua senha"
+                        autocomplete="new-password"
+                        aria-label="Confirmar senha"
+                        minlength="6"
+                        required
+                    >
+
+                    <button
+                        class="toggle-senha"
+                        type="button"
+                        data-target="confirmarSenha"
+                        aria-label="Mostrar senha"
+                        aria-pressed="false"
+                    >
+                        <img src="img/olho-aberto.png" alt="">
+                    </button>
+                </div>
+
+                <p class="mensagem-erro" id="mensagemErro" aria-live="polite"></p>
+
+                <button class="btn" type="submit">Criar conta</button>
+            </form>
+
+            <div class="login-link">
+                <span>Já possui uma conta?</span>
+                <a href="login.html">Entrar <span class="seta">→</span></a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <img src="img/escudo.png" alt="Segurança">
+        <span>JuskStore © 2026 - Todos os direitos reservados.</span>
+    </footer>
+
+    <script>
+        const botoesSenha = document.querySelectorAll(".toggle-senha");
+
+        botoesSenha.forEach((botao) => {
+            botao.addEventListener("click", () => {
+                const campo = document.getElementById(botao.dataset.target);
+                const icone = botao.querySelector("img");
+                const senhaVisivel = campo.type === "text";
+
+                campo.type = senhaVisivel ? "password" : "text";
+                icone.src = senhaVisivel
+                    ? "img/olho-aberto.png"
+                    : "img/olho-fechado.png";
+
+                botao.setAttribute(
+                    "aria-label",
+                    senhaVisivel ? "Mostrar senha" : "Ocultar senha"
+                );
+                botao.setAttribute("aria-pressed", String(!senhaVisivel));
+            });
+        });
+
+        const form = document.getElementById("formCadastro");
+        const senha = document.getElementById("senha");
+        const confirmarSenha = document.getElementById("confirmarSenha");
+        const mensagemErro = document.getElementById("mensagemErro");
+
+        form.addEventListener("submit", (event) => {
+            mensagemErro.textContent = "";
+            confirmarSenha.classList.remove("input-error");
+
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                form.reportValidity();
+                return;
+            }
+
+            if (senha.value !== confirmarSenha.value) {
+                event.preventDefault();
+                mensagemErro.textContent = "As senhas não coincidem.";
+                confirmarSenha.classList.add("input-error");
+                confirmarSenha.focus();
+            }
+        });
+    </script>
+    
+</body>
+</html>
